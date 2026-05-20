@@ -4,7 +4,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import *
 from django.views.decorators.csrf import csrf_exempt
-# Create your views here.
+
+
+
 
 @api_view(['POST'])
 def student_sign_in(req):
@@ -47,6 +49,7 @@ def get_courses(req):
             "description": course.description
         })
     return Response(course_list, status=status.HTTP_200_OK)
+
 
 def create_course(req):
     course_name = req.data.get('course_name')

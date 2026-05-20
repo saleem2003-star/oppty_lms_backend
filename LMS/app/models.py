@@ -3,6 +3,15 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 
 
+class Admin(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 
 class Student(models.Model):
     name = models.CharField(max_length=100)
@@ -12,11 +21,10 @@ class Student(models.Model):
     
     def __str__(self):
         return self.name
-
+      
 
 
 class ActiveUser(models.Model):
-
     student = models.OneToOneField(
         Student,
         on_delete=models.CASCADE
