@@ -34,8 +34,8 @@ def create_candidate(req):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
-
+@csrf_exempt
+@api_view(['GET'])
 def get_courses(req):
     courses = Course.objects.all()
     course_list = []
@@ -51,6 +51,8 @@ def get_courses(req):
     return Response(course_list, status=status.HTTP_200_OK)
 
 
+@csrf_exempt
+@api_view(['POST'])
 def create_course(req):
     course_name = req.data.get('course_name')
     price = req.data.get('price')
